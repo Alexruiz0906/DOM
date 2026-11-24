@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+        <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <form action="#">
+                    <input type="number" name="kg" id="kg" class="form-control" placeholder="escribe tu peso en kg" min="1" required>
+                    <input type="number" name="estatura" id="estatura" class="form-control" placeholder="escribe tu estatura en metros" min="1" required>
+                    <button class="btn btn-outline-danger" id="btn">Calcula tu IMC</button>
+                </form>
+                <p id="p" class="fw-bolder"></p>
+                <p id="detallePeso"></p>
+            </div>
+        </div>
+    </div>
+    <script>
+        const btn = document.getElementById("btn")
+        let peso =  document.getElementById("kg")
+        let estatura = document.getElementById("estatura")
+        let imc = 0
+        const p = document.getElementById("p")
+        const detalle = document.getElementById("detallePeso")
+        btn.addEventListener("click", function(){       
+            console.log(peso.value)  
+            console.log(estatura.value)   
+            imc = peso.value / (estatura.value * estatura.value)
+            detalle.classList.remove("text-secondary","text-primary","text-success","text-warning","text-danger")
+            if (peso.value && estatura.value != ""){
+                p.innerText = imc
+                if (imc < 18.5){
+                    detalle.innerText = "Bajo de Peso"
+                    detalle.classList.add("text-secondary")
+                }
+                else if(imc >= 18.5 && imc <= 24.9){
+                    detalle.innerText = "Peso normal"
+                    detalle.classList.add("text-primary")
+                }  
+                else if(imc >= 25 && imc <= 29.9){
+                    detalle.innerText = "Sobrepeso"
+                    detalle.classList.add("text-success")
+                }
+                else if(imc >= 30 && imc <=34.9){
+                    detalle.innerText = "Obesidad ligera"
+                    detalle.classList.add("text-warning")
+                }
+                else if(imc >= 35 && imc <= 39.9){
+                    detalle.innerText = "Obesidad"
+                    detalle.classList.add("text-danger")
+                }
+                else if(imc >= 40){
+                    detalle.innerText = "Obesidad morbida"
+                    detalle.classList.add("text-danger")
+                }
+        }
+        else{
+            p.innerText = ""
+        }
+            })
+            
+        
+    </script>
+    
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

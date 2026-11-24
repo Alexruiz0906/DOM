@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+
+                    <button class="btn btn-success rounded-circle" id="green"></button>
+                    <button class="btn btn-warning rounded-circle" id="yellow"></button>
+                    <button class="btn btn-danger rounded-circle" id="red"></button>
+                    <p id="p"></p>
+                    <script>
+                        const button = document.querySelectorAll("button")
+                        const p = document.getElementById("p")
+                        button.forEach(btn => {
+                        btn.addEventListener("click", function(){
+                            p.classList.remove("text-success", "text-warning", "text-danger")
+                            let idElegido = btn.getAttribute("id")
+                            if (idElegido === "green"){
+                                p.classList.add("text-success")
+                                p.textContent = "Puedes avanzar"
+                            }
+                            else if(idElegido === "yellow"){
+                                p.classList.add("text-warning")
+                                p.textContent = "Precaucion"
+                            }
+                            else if(idElegido === "red"){
+                                p.classList.add("text-danger")
+                                p.textContent = "Detente"
+                            }
+
+                        })
+                            
+                        });
+                        
+                    </script>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
